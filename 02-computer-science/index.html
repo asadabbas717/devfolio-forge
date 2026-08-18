@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daniel Kim — Computer Science Student</title>
+  <meta name="description" content="Academic-meets-modern computer science student portfolio for Daniel Kim, featuring coursework, research interests, projects, hackathons, and education.">
+  <meta name="keywords" content="computer science student, algorithms, operating systems, artificial intelligence, distributed systems, computer networks, portfolio">
+  <meta name="author" content="Daniel Kim">
+  <meta property="og:title" content="Daniel Kim — Computer Science Student">
+  <meta property="og:description" content="Exploring algorithms, systems, and the engineering ideas that connect theory to useful software.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#f4f0e7">
+  <style>
+    :root {
+      --paper: #f4f0e7;
+      --paper-2: #fffdf8;
+      --ink: #1f2927;
+      --muted: #68736f;
+      --green: #315f55;
+      --green-soft: #dce8df;
+      --amber: #a56b2d;
+      --red: #a8463d;
+      --blue: #3b648d;
+      --line: #d9d2c5;
+      --line-strong: #c7bead;
+      --shadow: 0 18px 45px rgba(52, 48, 39, .09);
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --container: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0; min-width: 320px; overflow-x: hidden; color: var(--ink); background: var(--paper);
+      font-family: Georgia, "Times New Roman", serif; line-height: 1.7;
+      background-image: linear-gradient(rgba(49,95,85,.045) 1px, transparent 1px);
+      background-size: 100% 32px;
+    }
+    body::before { content: ""; position: fixed; left: clamp(14px, 5vw, 72px); top: 0; bottom: 0; width: 1px; background: rgba(168,70,61,.18); pointer-events: none; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; }
+    :focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+    ::selection { background: #f2d9a6; }
+    .sans { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .container { width: min(calc(100% - 2rem), var(--container)); margin-inline: auto; }
+    .section { padding: clamp(4.5rem, 9vw, 8rem) 0; }
+    .kicker { font: 800 .73rem/1.2 Inter, ui-sans-serif, system-ui, sans-serif; letter-spacing: .17em; text-transform: uppercase; color: var(--green); }
+    .section-title { margin: .65rem 0 .8rem; font-size: clamp(2.25rem, 6vw, 4.8rem); line-height: .98; letter-spacing: -.045em; font-weight: 500; }
+    .section-copy { max-width: 680px; color: var(--muted); font-size: 1.02rem; }
+
+    .site-header { position: sticky; top: 0; z-index: 100; background: rgba(244,240,231,.88); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(199,190,173,.65); }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .brand { display: flex; gap: .7rem; align-items: center; font: 850 .93rem Inter, ui-sans-serif, sans-serif; }
+    .brand-mark { width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid var(--ink); border-radius: 50%; font-family: Georgia, serif; font-style: italic; font-weight: 700; }
+    .nav-links { display: flex; align-items: center; gap: .2rem; font: 700 .84rem Inter, ui-sans-serif, sans-serif; }
+    .nav-links a { padding: .55rem .7rem; color: #586460; border-radius: 7px; }
+    .nav-links a:hover, .nav-links a.active { color: var(--green); background: rgba(49,95,85,.07); }
+    .menu-btn { display: none; width: 44px; height: 44px; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--paper-2); cursor: pointer; }
+    .menu-btn span, .menu-btn::before, .menu-btn::after { content:""; display:block; width:18px; height:2px; background:var(--ink); margin:4px auto; }
+
+    .hero { min-height: calc(100vh - 76px); display: grid; align-items: center; padding: clamp(4rem, 8vw, 7rem) 0; }
+    .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: clamp(2rem, 7vw, 6rem); align-items: center; }
+    .hero-note { display: inline-flex; align-items: center; gap: .6rem; padding: .45rem .7rem; border: 1px solid var(--line-strong); border-radius: 4px; background: rgba(255,253,248,.6); font: 700 .78rem Inter, ui-sans-serif, sans-serif; color: var(--green); transform: rotate(-1deg); }
+    .hero-note::before { content:""; width:8px; height:8px; border-radius:50%; background: var(--green); }
+    .hero h1 { margin: 1.25rem 0 .8rem; font-size: clamp(3.6rem, 10vw, 8.8rem); line-height: .83; letter-spacing: -.075em; font-weight: 500; }
+    .hero h1 em { display: block; color: var(--green); font-weight: 400; }
+    .hero-copy { max-width: 650px; color: #56625e; font-size: clamp(1.05rem, 2.2vw, 1.25rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.7rem; font-family: Inter, ui-sans-serif, sans-serif; }
+    .btn { min-height: 47px; display: inline-flex; align-items: center; justify-content: center; padding: .75rem 1rem; border-radius: 9px; border: 1px solid var(--line-strong); font-size: .88rem; font-weight: 800; transition: transform .2s ease, background .2s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: #fff; background: var(--green); border-color: var(--green); }
+    .btn-secondary { background: var(--paper-2); }
+    .hero-facts { margin-top: 1.8rem; display: flex; flex-wrap: wrap; gap: 1.2rem; font: 650 .81rem Inter, ui-sans-serif, sans-serif; color: var(--muted); }
+    .hero-facts b { color: var(--ink); }
+
+    .research-card { position: relative; padding: 2rem 1.8rem 1.6rem; border: 1px solid var(--line-strong); border-radius: 4px; background: var(--paper-2); box-shadow: var(--shadow); transform: rotate(1deg); }
+    .research-card::before { content:""; position:absolute; top:-9px; left:50%; width:92px; height:22px; transform: translateX(-50%) rotate(-2deg); background: rgba(209,193,156,.6); border: 1px solid rgba(175,158,119,.3); }
+    .research-card small { display:block; color:var(--muted); font:700 .7rem Inter,sans-serif; letter-spacing:.13em; text-transform:uppercase; }
+    .research-card h2 { margin:.5rem 0 1rem; font-size:2rem; font-weight:500; line-height:1.1; }
+    .research-list { display:grid; gap:.8rem; }
+    .research-item { padding:.85rem 0; border-top:1px solid var(--line); display:grid; grid-template-columns:34px 1fr; gap:.65rem; }
+    .research-item b { color:var(--amber); font:800 .78rem Inter,sans-serif; }
+    .research-item strong { display:block; margin-bottom:.2rem; }
+    .research-item span { color:var(--muted); font-size:.9rem; }
+    .margin-note { margin-top:1.2rem; padding-left:1rem; border-left:3px solid var(--red); color:#75554f; font-style:italic; }
+
+    .academic-strip { display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--line-strong); border-bottom:1px solid var(--line-strong); }
+    .academic-stat { padding:1.4rem 1rem; border-right:1px solid var(--line); }
+    .academic-stat:last-child { border-right:0; }
+    .academic-stat strong { display:block; font:650 clamp(1.4rem,4vw,2.2rem) Georgia,serif; }
+    .academic-stat span { color:var(--muted); font:650 .78rem Inter,sans-serif; }
+
+    .about-grid { display:grid; grid-template-columns:.75fr 1.25fr; gap:clamp(2rem,7vw,6rem); }
+    .quote { position:sticky; top:120px; padding:1.4rem; border-left:4px solid var(--green); background:rgba(255,253,248,.45); font-size:clamp(1.3rem,3vw,1.8rem); line-height:1.45; }
+    .about-copy p { color:#58635f; }
+    .about-copy p:first-child { font-size:1.2rem; color:var(--ink); }
+
+    .knowledge-shell { margin-top:2.2rem; padding:1rem; border:1px solid var(--line-strong); border-radius:var(--radius-md); background:rgba(255,253,248,.72); box-shadow:var(--shadow); }
+    .knowledge-toolbar { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.4rem .4rem 1rem; font:700 .78rem Inter,sans-serif; color:var(--muted); }
+    .knowledge-map { position:relative; min-height:430px; overflow:hidden; border:1px solid var(--line); border-radius:12px; background-image: radial-gradient(circle, rgba(49,95,85,.16) 1px, transparent 1px); background-size:22px 22px; }
+    .knowledge-map svg { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+    .knowledge-map line { stroke:#a8b7ae; stroke-width:1.4; stroke-dasharray:4 6; }
+    .node { position:absolute; transform:translate(-50%,-50%); min-width:130px; border:1px solid var(--line-strong); border-radius:12px; padding:.72rem .8rem; background:var(--paper-2); box-shadow:0 8px 18px rgba(64,57,45,.08); cursor:pointer; text-align:left; transition:.2s ease; font-family:Inter,sans-serif; }
+    .node:hover,.node[aria-pressed="true"] { border-color:var(--green); transform:translate(-50%,-50%) translateY(-3px); box-shadow:0 14px 30px rgba(49,95,85,.14); }
+    .node small { display:block; color:var(--muted); font-size:.68rem; margin-top:.2rem; }
+    .node-center { left:50%; top:50%; background:var(--green); color:white; border-color:var(--green); }
+    .node-center small { color:#dcebe5; }
+    .node-a { left:21%; top:24%; } .node-b { left:78%; top:23%; } .node-c { left:18%; top:76%; } .node-d { left:80%; top:76%; } .node-e { left:50%; top:15%; }
+    .knowledge-detail { margin-top:.8rem; min-height:96px; padding:1rem 1.05rem; border:1px solid var(--line); border-radius:10px; background:var(--paper-2); }
+    .knowledge-detail strong { color:var(--green); font-family:Inter,sans-serif; }
+    .knowledge-detail p { margin:.3rem 0 0; color:var(--muted); }
+
+    .course-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:2rem; }
+    .course { padding:1.2rem; border:1px solid var(--line-strong); background:rgba(255,253,248,.7); border-radius:4px 18px 4px 18px; }
+    .course .code { font:800 .73rem Inter,sans-serif; color:var(--amber); letter-spacing:.08em; }
+    .course h3 { margin:.45rem 0 .4rem; font-size:1.23rem; }
+    .course p { margin:0; color:var(--muted); font-size:.92rem; }
+
+    .projects-list { margin-top:2.2rem; display:grid; border-top:1px solid var(--line-strong); }
+    .project { display:grid; grid-template-columns:130px 1fr auto; gap:1.2rem; align-items:start; padding:1.5rem .2rem; border-bottom:1px solid var(--line); }
+    .project-type { font:800 .73rem Inter,sans-serif; color:var(--green); text-transform:uppercase; letter-spacing:.12em; }
+    .project h3 { margin:0 0 .35rem; font-size:1.4rem; }
+    .project p { margin:0; color:var(--muted); max-width:640px; }
+    .project-tags { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.7rem; }
+    .tag { padding:.3rem .55rem; border:1px solid var(--line-strong); border-radius:999px; font:700 .7rem Inter,sans-serif; color:#59645f; background:rgba(255,255,255,.35); }
+    .project-links { display:flex; gap:.5rem; font:800 .78rem Inter,sans-serif; }
+    .project-links a { padding:.5rem .65rem; border:1px solid var(--line-strong); border-radius:7px; background:var(--paper-2); }
+
+    .dual-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:2rem; }
+    .paper-card { padding:1.3rem; border:1px solid var(--line-strong); background:var(--paper-2); box-shadow:var(--shadow); }
+    .paper-card h3 { margin:.2rem 0 .45rem; }
+    .paper-card p,.paper-card li { color:var(--muted); }
+    .paper-card ul { padding-left:1.1rem; }
+    .paper-card .date { font:800 .72rem Inter,sans-serif; color:var(--amber); }
+
+    .contact-sheet { padding:clamp(1.5rem,5vw,3rem); border:1px solid var(--line-strong); background:var(--paper-2); box-shadow:var(--shadow); display:grid; grid-template-columns:1.2fr .8fr; gap:2rem; }
+    .contact-sheet h2 { margin:.4rem 0 .8rem; font-size:clamp(2.3rem,6vw,4.8rem); line-height:.95; font-weight:500; }
+    .contact-list { display:grid; align-content:center; gap:.6rem; font-family:Inter,sans-serif; }
+    .contact-link { display:flex; justify-content:space-between; gap:1rem; padding:.8rem 0; border-bottom:1px solid var(--line); font-weight:750; }
+    .contact-link span { color:var(--muted); font-size:.75rem; }
+
+    footer { padding:1.5rem 0 2.5rem; border-top:1px solid var(--line-strong); font:650 .8rem Inter,sans-serif; color:var(--muted); }
+    .footer-row { display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+    .footer-row a:hover { color:var(--green); }
+    .reveal { opacity:0; transform:translateY(14px); transition:.6s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+
+    @media (max-width:900px) {
+      .hero-grid,.about-grid,.contact-sheet { grid-template-columns:1fr; }
+      .research-card { max-width:700px; }
+      .quote { position:static; }
+      .course-grid { grid-template-columns:1fr 1fr; }
+      .project { grid-template-columns:100px 1fr; }
+      .project-links { grid-column:2; }
+    }
+    @media (max-width:720px) {
+      .menu-btn { display:block; }
+      .nav-links { position:absolute; top:calc(100% + 1px); left:1rem; right:1rem; display:grid; padding:.6rem; border:1px solid var(--line-strong); border-radius:12px; background:var(--paper-2); box-shadow:var(--shadow); opacity:0; transform:translateY(-8px); pointer-events:none; transition:.2s ease; }
+      .nav-links.open { opacity:1; transform:none; pointer-events:auto; }
+      .nav-links a { padding:.75rem; }
+      .academic-strip { grid-template-columns:1fr 1fr; }
+      .academic-stat:nth-child(2){border-right:0}.academic-stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+      .knowledge-map { min-height:560px; }
+      .node { min-width:112px; font-size:.78rem; }
+      .node-a{left:24%;top:19%}.node-b{left:76%;top:19%}.node-c{left:24%;top:82%}.node-d{left:76%;top:82%}.node-e{left:50%;top:6%}
+      .course-grid { grid-template-columns:1fr; }
+      .dual-grid { grid-template-columns:1fr; }
+    }
+    @media (max-width:520px) {
+      .container { width:min(calc(100% - 1.2rem),var(--container)); }
+      .hero h1 { font-size:clamp(3.3rem,19vw,5.2rem); }
+      .hero-actions .btn { width:100%; }
+      .project { grid-template-columns:1fr; }
+      .project-links { grid-column:1; }
+      .knowledge-map { min-height:620px; }
+      .node-center{top:50%}.node-a{left:28%;top:20%}.node-b{left:72%;top:30%}.node-c{left:28%;top:72%}.node-d{left:72%;top:82%}.node-e{left:50%;top:7%}
+      .knowledge-map svg { display:none; }
+      .contact-link { flex-direction:column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html{scroll-behavior:auto} *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}.reveal{opacity:1;transform:none}
+    }
+  </style>
+  <!--
+  PERSONALIZATION CHECKLIST
+
+  Replace:
+  1. Your name
+  2. Professional title
+  3. Bio
+  4. Email
+  5. GitHub URL
+  6. LinkedIn URL
+  7. Resume URL
+  8. Project information
+  9. Education
+  10. Experience
+  11. Skills
+  12. Location
+
+  Never publish sample achievements, work experience, statistics,
+  certifications, or education as your own unless they are true.
+  -->
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#home"><span class="brand-mark">Dk</span><span>Daniel Kim / CS Notes</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-controls="navLinks" aria-expanded="false"><span></span></button>
+      <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
+        <a href="#about">About</a><a href="#coursework">Coursework</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="hero-note sans">Student portfolio · sample content</span>
+          <h1>Daniel Kim <em>Computer Science.</em></h1>
+          <p class="hero-copy">I study the ideas behind dependable software: algorithms, operating systems, networks, distributed systems, and the ways theory becomes working code.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#projects">Read Project Notes</a><a class="btn btn-secondary" href="resume.pdf">Academic Resume</a></div>
+          <div class="hero-facts"><span><b>Degree:</b> BSc Computer Science</span><span><b>Focus:</b> Systems + AI</span><span><b>Status:</b> Sample student profile</span></div>
+        </div>
+        <aside class="research-card reveal">
+          <small>Research notebook / current questions</small>
+          <h2>Things I want to understand deeply.</h2>
+          <div class="research-list">
+            <div class="research-item"><b>01</b><div><strong>Distributed coordination</strong><span>How systems preserve useful guarantees when messages arrive late or not at all.</span></div></div>
+            <div class="research-item"><b>02</b><div><strong>Efficient algorithms</strong><span>How data structures shape the practical cost of software at scale.</span></div></div>
+            <div class="research-item"><b>03</b><div><strong>Learning systems</strong><span>Where statistical models are reliable, and where human judgment still matters.</span></div></div>
+          </div>
+          <div class="margin-note">“Write the invariant down before writing the implementation.”</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="container" aria-label="Sample academic metrics">
+      <div class="academic-strip reveal">
+        <div class="academic-stat"><strong>12</strong><span>Sample core courses</span></div><div class="academic-stat"><strong>8</strong><span>Programming projects</span></div><div class="academic-stat"><strong>2</strong><span>Hackathon entries</span></div><div class="academic-stat"><strong>4</strong><span>Research interests</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="quote">“Computer science gives me a language for asking precise questions about complexity, correctness, and computation.”</div>
+        <div class="about-copy reveal"><span class="kicker">About</span><h2 class="section-title">Learning the foundations, then testing them in code.</h2><p>This demonstration profile represents a student who enjoys moving between theory and implementation. Coursework informs project decisions, while projects expose the assumptions that lectures can hide.</p><p>My sample interests include algorithms, operating systems, artificial intelligence, distributed systems, and computer networks. I am especially interested in problems where correctness and performance must coexist.</p><p>Before publishing this template, replace all academic history, awards, hackathons, certifications, and statistics with facts you can verify.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="coursework">
+      <div class="container">
+        <span class="kicker">Signature feature</span><h2 class="section-title">Interactive knowledge map.</h2><p class="section-copy">Select a subject to reveal why it matters and how it connects to the rest of the curriculum.</p>
+        <div class="knowledge-shell reveal">
+          <div class="knowledge-toolbar"><span>Course relationship sketch</span><span>Tap a node</span></div>
+          <div class="knowledge-map" id="knowledgeMap">
+            <svg viewBox="0 0 1000 500" preserveAspectRatio="none" aria-hidden="true"><line x1="500" y1="250" x2="210" y2="120"/><line x1="500" y1="250" x2="780" y2="115"/><line x1="500" y1="250" x2="180" y2="380"/><line x1="500" y1="250" x2="800" y2="380"/><line x1="500" y1="250" x2="500" y2="75"/></svg>
+            <button class="node node-center" type="button" aria-pressed="true" data-topic="core"><strong>Computer Science</strong><small>shared foundations</small></button>
+            <button class="node node-a" type="button" aria-pressed="false" data-topic="algorithms"><strong>Algorithms</strong><small>complexity + structure</small></button>
+            <button class="node node-b" type="button" aria-pressed="false" data-topic="systems"><strong>Operating Systems</strong><small>processes + memory</small></button>
+            <button class="node node-c" type="button" aria-pressed="false" data-topic="networks"><strong>Networks</strong><small>protocols + reliability</small></button>
+            <button class="node node-d" type="button" aria-pressed="false" data-topic="distributed"><strong>Distributed Systems</strong><small>coordination + failure</small></button>
+            <button class="node node-e" type="button" aria-pressed="false" data-topic="ai"><strong>Artificial Intelligence</strong><small>search + learning</small></button>
+          </div>
+          <div class="knowledge-detail" id="knowledgeDetail"><strong>Computer Science</strong><p>Shared ideas such as abstraction, data representation, complexity, and correctness connect the subjects rather than leaving them as isolated courses.</p></div>
+        </div>
+
+        <div class="course-grid">
+          <article class="course reveal"><span class="code">CS 201</span><h3>Data Structures & Algorithms</h3><p>Graphs, trees, hashing, dynamic programming, asymptotic analysis, and problem decomposition.</p></article>
+          <article class="course reveal"><span class="code">CS 305</span><h3>Operating Systems</h3><p>Processes, threads, scheduling, virtual memory, synchronization, file systems, and resource isolation.</p></article>
+          <article class="course reveal"><span class="code">CS 318</span><h3>Computer Networks</h3><p>Layering, addressing, routing, reliable transport, HTTP, DNS, and practical protocol analysis.</p></article>
+          <article class="course reveal"><span class="code">CS 340</span><h3>Database Systems</h3><p>Relational modeling, SQL, indexes, transactions, normalization, and query planning fundamentals.</p></article>
+          <article class="course reveal"><span class="code">CS 411</span><h3>Artificial Intelligence</h3><p>Search, probabilistic reasoning, machine-learning foundations, evaluation, and responsible use.</p></article>
+          <article class="course reveal"><span class="code">CS 430</span><h3>Distributed Systems</h3><p>Replication, consistency, consensus concepts, clocks, fault tolerance, and system trade-offs.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= SKILLS ========================= -->
+    <section class="section" id="skills">
+      <div class="container"><span class="kicker">Skills</span><h2 class="section-title">Tools used to turn coursework into working programs.</h2><p class="section-copy">A sample student toolkit grouped by purpose rather than unsupported proficiency percentages.</p>
+        <div class="course-grid">
+          <article class="course reveal"><span class="code">LANGUAGES</span><h3>Programming</h3><p>Python, Java, C, JavaScript, and SQL for coursework, algorithms, systems exercises, and web projects.</p></article>
+          <article class="course reveal"><span class="code">FOUNDATIONS</span><h3>Computer Science</h3><p>Data structures, algorithms, complexity analysis, operating systems, networks, databases, and software design.</p></article>
+          <article class="course reveal"><span class="code">TOOLS</span><h3>Development</h3><p>Git, Linux, debugging, command-line workflows, testing fundamentals, and collaborative repository practices.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container"><span class="kicker">Projects</span><h2 class="section-title">Projects as extended lab notes.</h2><p class="section-copy">Descriptions emphasize the question being explored, not just the technology used.</p>
+        <div class="projects-list">
+          <article class="project reveal"><div class="project-type">Algorithms</div><div><h3>PathScope</h3><p>An interactive graph explorer comparing breadth-first search, Dijkstra's algorithm, and A* on the same weighted map while exposing queue state and visited nodes.</p><div class="project-tags"><span class="tag">JavaScript</span><span class="tag">SVG</span><span class="tag">Graph Theory</span></div></div><div class="project-links"><a href="https://github.com/yourusername/pathscope" target="_blank" rel="noopener noreferrer">Code ↗</a><a href="#contact">Demo</a></div></article>
+          <article class="project reveal"><div class="project-type">Systems</div><div><h3>MiniShell Notes</h3><p>A small command interpreter built to study process creation, pipes, environment variables, and exit status while documenting the operating-system concepts behind each feature.</p><div class="project-tags"><span class="tag">C</span><span class="tag">POSIX</span><span class="tag">Processes</span></div></div><div class="project-links"><a href="https://github.com/yourusername/minishell-notes" target="_blank" rel="noopener noreferrer">Code ↗</a></div></article>
+          <article class="project reveal"><div class="project-type">Networks</div><div><h3>PacketAtlas</h3><p>A safe local network-learning visualization that parses sample packet metadata and explains how protocol layers relate without performing active scanning or offensive actions.</p><div class="project-tags"><span class="tag">Python</span><span class="tag">Networking</span><span class="tag">Visualization</span></div></div><div class="project-links"><a href="https://github.com/yourusername/packetatlas" target="_blank" rel="noopener noreferrer">Code ↗</a><a href="#contact">Notes</a></div></article>
+          <article class="project reveal"><div class="project-type">AI</div><div><h3>StudyRank</h3><p>A recommendation experiment that ranks study resources from structured metadata, compares simple baselines, and records model-evaluation limitations alongside results.</p><div class="project-tags"><span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Evaluation</span></div></div><div class="project-links"><a href="https://github.com/yourusername/studyrank" target="_blank" rel="noopener noreferrer">Code ↗</a></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="container"><span class="kicker">Academic record</span><h2 class="section-title">Education, research, and community.</h2><p class="section-copy">Everything in this section is sample content and must be replaced with truthful information.</p>
+        <!-- SAMPLE EDUCATION / EXPERIENCE: replace before publishing. -->
+        <div class="dual-grid">
+          <article class="paper-card reveal"><span class="date sans">SAMPLE · 2022 — 2026</span><h3>BSc Computer Science · Example University</h3><p>Sample education entry. Relevant study areas include algorithms, systems, databases, networks, software engineering, and artificial intelligence.</p></article>
+          <article class="paper-card reveal"><span class="date sans">SAMPLE · 2025</span><h3>Undergraduate Research Assistant</h3><p>Assisted with literature review organization and small reproducibility experiments for a systems research group. Replace with real research experience only.</p></article>
+          <article class="paper-card reveal"><span class="date sans">SAMPLE · 2025</span><h3>Hackathon · Campus Build Weekend</h3><p>Prototype theme: accessible study planning. Sample entry intended to demonstrate layout, not a credential to claim.</p></article>
+          <article class="paper-card reveal"><span class="date sans">SAMPLE CERTIFICATIONS</span><h3>Learning Milestones</h3><ul><li>Introductory cloud fundamentals</li><li>Git and collaborative development</li><li>Foundational SQL practice</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container contact-sheet reveal"><div><span class="kicker">Contact</span><h2>Continue the conversation.</h2><p class="section-copy">For internships, research conversations, student collaborations, or project feedback, replace these demonstration links with your real details.</p><div class="hero-actions"><a class="btn btn-primary" href="mailto:hello@example.com">Email Daniel</a><a class="btn btn-secondary" href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div><div class="contact-list"><a class="contact-link" href="mailto:hello@example.com"><strong>hello@example.com</strong><span>Email</span></a><a class="contact-link" href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer"><strong>github.com/yourusername</strong><span>GitHub ↗</span></a><a class="contact-link" href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer"><strong>linkedin.com/in/yourusername</strong><span>LinkedIn ↗</span></a><div class="contact-link"><strong>Your City, Country</strong><span>Location</span></div></div></div>
+    </section>
+  </main>
+
+  <footer><div class="container footer-row"><span>© <span id="year"></span> Daniel Kim. Demonstration portfolio.</span><span><a href="#home">Back to top ↑</a></span></div></footer>
+
+  <script>
+    (() => {
+      const menuBtn = document.getElementById('menuBtn');
+      const nav = document.getElementById('navLinks');
+      const navLinks = [...nav.querySelectorAll('a[href^="#"]')];
+      menuBtn.addEventListener('click', () => { const open = nav.classList.toggle('open'); menuBtn.setAttribute('aria-expanded', String(open)); });
+      navLinks.forEach(link => link.addEventListener('click', () => { nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false'); }));
+      document.addEventListener('keydown', e => { if(e.key==='Escape'){nav.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');} });
+
+      const sections = [...document.querySelectorAll('main section[id]')];
+      const setActive = () => { let current=''; sections.forEach(s=>{if(scrollY>=s.offsetTop-130)current=s.id}); navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')===`#${current}`)); };
+      addEventListener('scroll', setActive, {passive:true}); setActive();
+
+      const revealObserver = new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target)}}),{threshold:.12});
+      document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+
+      const details = {
+        core:['Computer Science','Shared ideas such as abstraction, data representation, complexity, and correctness connect the subjects rather than leaving them as isolated courses.'],
+        algorithms:['Algorithms','Algorithm analysis teaches how input size, representation, and data structures shape the cost of a solution before implementation details take over.'],
+        systems:['Operating Systems','Processes, scheduling, synchronization, memory, and files explain the execution model underneath everyday applications.'],
+        networks:['Computer Networks','Layered protocols show how independently designed systems exchange data while coping with delay, loss, addressing, and routing.'],
+        distributed:['Distributed Systems','Replication and coordination make failure a normal design condition rather than an exceptional one, forcing explicit consistency trade-offs.'],
+        ai:['Artificial Intelligence','Search, uncertainty, optimization, and statistical learning provide multiple ways to make decisions when exhaustive rules are impractical.']
+      };
+      const detail = document.getElementById('knowledgeDetail');
+      const nodes = [...document.querySelectorAll('.node')];
+      nodes.forEach(node=>node.addEventListener('click',()=>{
+        nodes.forEach(n=>n.setAttribute('aria-pressed','false')); node.setAttribute('aria-pressed','true');
+        const [title,copy]=details[node.dataset.topic]; detail.replaceChildren(); const strong=document.createElement('strong'); strong.textContent=title; const p=document.createElement('p'); p.textContent=copy; detail.append(strong,p);
+      }));
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
