@@ -1,0 +1,10 @@
+node_modules/
+.npm-cache/
+.audit-baseline/
+test-results/
+playwright-report/
+.env
+.env.*
+!.env.example
+Thumbs.db
+.DS_Store

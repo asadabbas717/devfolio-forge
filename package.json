@@ -1,0 +1,13 @@
+{
+  "name": "devfolio-forge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Quality checks for ten standalone portfolio templates",
+  "scripts": {
+    "personalize": "node scripts/personalize.cjs",
+    "check": "node --test tests/static.test.cjs tests/personalize.test.cjs",
+    "test": "node --test tests/browser.test.cjs"
+  },
+  "engines": { "node": ">=22" },
+  "devDependencies": { "playwright": "1.62.1" }
+}

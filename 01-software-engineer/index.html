@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Alex Morgan — Software Engineer</title>
-  <meta name="description" content="Software engineering portfolio template for Alex Morgan, focused on scalable applications, reliable systems, and product-minded engineering.">
+  <title data-profile-text="name" data-profile-role="Software Engineer">Alex Morgan — Software Engineer</title>
+  <meta data-profile-description="Software engineering portfolio template for {{name}}, focused on scalable applications, reliable systems, and product-minded engineering." name="description" content="Software engineering portfolio template for Alex Morgan, focused on scalable applications, reliable systems, and product-minded engineering.">
   <meta name="keywords" content="software engineer, JavaScript, TypeScript, Python, React, Node.js, PostgreSQL, Docker, AWS, portfolio">
-  <meta name="author" content="Alex Morgan">
-  <meta property="og:title" content="Alex Morgan — Software Engineer">
+  <meta data-profile-content="name" name="author" content="Alex Morgan">
+  <meta data-profile-description="{{name}} — Software Engineer" property="og:title" content="Alex Morgan — Software Engineer">
   <meta property="og:description" content="Building dependable software with thoughtful architecture and polished user experiences.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#07111f">
@@ -219,7 +219,7 @@
     .footer-links a:hover { color: var(--primary); }
     .back-top { width: 42px; height: 42px; border: 1px solid var(--border); border-radius: 12px; display: grid; place-items: center; background: rgba(255,255,255,.03); }
 
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal {opacity:1; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
     .reveal.visible { opacity: 1; transform: none; }
     @keyframes pulse { 50% { box-shadow: 0 0 0 9px rgba(121,230,199,0); } }
 
@@ -258,16 +258,28 @@
       *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
       .reveal { opacity: 1; transform: none; }
     }
+
+    /* Navigation stays usable without scripts; hidden menus leave the tab order. */
+    .skip-link { position:fixed; top:0; left:1rem; z-index:2000; padding:.75rem 1rem; background:#fff; color:#111; transform:translateY(-120%); }
+    .skip-link:focus { transform:none; }
+    @media(max-width:760px) {
+      .nav-links:not(.open) { visibility:hidden; }
+      .nav-links.open { visibility:visible; }
+      html:not(.navigation-ready) .nav { flex-wrap:wrap; }
+      html:not(.navigation-ready) .nav-links { position:static; display:flex; flex-wrap:wrap; opacity:1; transform:none; pointer-events:auto; visibility:visible; width:100%; }
+      html:not(.navigation-ready) #menu, html:not(.navigation-ready) #menuBtn { display:none; }
+    }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
   <!-- ========================= HEADER ========================= -->
   <header class="site-header" id="siteHeader">
     <div class="container nav">
-      <a class="brand" href="#home" aria-label="Alex Morgan home">
-        <span class="brand-mark">AM</span>
+      <a class="brand" href="#home" data-profile-aria-label="homeLabel" aria-label="Alex Morgan home">
+        <span class="brand-mark"><!--profile:initials-->AM<!--/profile:initials--></span>
         <span>alex.morgan</span>
       </a>
       <button class="menu-btn" id="menuBtn" type="button" aria-label="Open navigation" aria-controls="navLinks" aria-expanded="false"><span></span></button>
@@ -281,21 +293,21 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <!-- ========================= HERO ========================= -->
     <section class="hero" id="home">
       <div class="container hero-grid">
         <div>
           <div class="status"><span class="status-dot"></span> Available for selected opportunities</div>
-          <h1>Alex Morgan <span>Software Engineer.</span></h1>
-          <p class="hero-copy">I build dependable web products and backend services with a focus on clear architecture, maintainable code, and the details that make software feel reliable.</p>
+          <h1><!--profile:name-->Alex Morgan<!--/profile:name--> <span>Software Engineer.</span></h1>
+          <p class="hero-copy" data-profile-text="bio">I build dependable web products and backend services with a focus on clear architecture, maintainable code, and the details that make software feel reliable.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#projects">View Projects <span aria-hidden="true">→</span></a>
             <!-- Replace this placeholder GitHub URL with your real profile. -->
-            <a class="btn btn-secondary" href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">View GitHub ↗</a>
+            <a data-profile-href="githubUrl" class="btn btn-secondary" href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">View GitHub ↗</a>
           </div>
           <div class="hero-meta">
-            <span><strong>Based in</strong> Your City</span>
+            <span><strong>Based in</strong> <!--profile:location-->Your City<!--/profile:location--></span>
             <span><strong>Focus</strong> Product + Platform</span>
             <span><strong>Timezone</strong> UTC±00</span>
           </div>
@@ -305,7 +317,7 @@
           <div class="window-bar"><div class="window-dots"><i></i><i></i><i></i></div><span>profile.ts</span><span>main</span></div>
           <div class="code-pane" aria-label="Decorative code sample">
             <div><span class="line-no">01</span><span class="token-k">type</span> Engineer = {</div>
-            <div><span class="line-no">02</span>&nbsp;&nbsp;name: <span class="token-s">"Alex Morgan"</span>,</div>
+            <div><span class="line-no">02</span>&nbsp;&nbsp;name: <span class="token-s">"<!--profile:name-->Alex Morgan<!--/profile:name-->"</span>,</div>
             <div><span class="line-no">03</span>&nbsp;&nbsp;role: <span class="token-s">"Software Engineer"</span>,</div>
             <div><span class="line-no">04</span>&nbsp;&nbsp;values: [</div>
             <div><span class="line-no">05</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="token-s">"clarity"</span>,</div>
@@ -328,10 +340,10 @@
 
     <section class="container" aria-label="Sample portfolio metrics">
       <div class="metric-strip reveal">
-        <div class="metric"><strong data-count="15" data-suffix="+">0</strong><span>Sample projects</span></div>
-        <div class="metric"><strong data-count="3" data-suffix=" yrs">0</strong><span>Sample coding time</span></div>
-        <div class="metric"><strong data-count="20" data-suffix="+">0</strong><span>Sample repositories</span></div>
-        <div class="metric"><strong data-count="5" data-suffix="+">0</strong><span>Technology areas</span></div>
+        <div class="metric"><strong data-count="15" data-suffix="+">15+</strong><span>Sample projects</span></div>
+        <div class="metric"><strong data-count="3" data-suffix=" yrs">3 yrs</strong><span>Sample coding time</span></div>
+        <div class="metric"><strong data-count="20" data-suffix="+">20+</strong><span>Sample repositories</span></div>
+        <div class="metric"><strong data-count="5" data-suffix="+">5+</strong><span>Technology areas</span></div>
       </div>
     </section>
 
@@ -427,7 +439,7 @@
         <h2 class="section-title" id="terminalTitle">Developer command panel.</h2>
         <p class="section-copy">A safe, local interaction layer. Type a supported command; nothing is sent anywhere.</p>
         <div class="command-panel reveal">
-          <div class="command-head"><span>alex@portfolio:~</span><span>local session</span></div>
+          <div class="command-head"><span><!--profile:firstName-->alex<!--/profile:firstName-->@portfolio:~</span><span>local session</span></div>
           <div class="terminal-output" id="terminalOutput" aria-live="polite">
             <p class="system">Portfolio shell v1.0 — local demonstration only.</p>
             <p>Try <span class="success">help</span> to see available commands.</p>
@@ -435,7 +447,7 @@
           <form class="terminal-form" id="terminalForm">
             <span class="prompt" aria-hidden="true">$</span>
             <label class="visually-hidden" for="terminalInput" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Terminal command</label>
-            <input id="terminalInput" autocomplete="off" spellcheck="false" placeholder="help">
+            <input id="terminalInput" maxlength="200" autocomplete="off" spellcheck="false" placeholder="help">
             <button type="submit">Run</button>
           </form>
         </div>
@@ -450,22 +462,31 @@
           <span class="eyebrow">Contact</span>
           <h2>Build something dependable.</h2>
           <p class="section-copy">For opportunities, collaborations, or project conversations, use one of the editable contact links. Replace every placeholder before publishing.</p>
-          <div class="hero-actions"><a class="btn btn-primary" href="mailto:hello@example.com">Email Alex</a><!-- Replace resume.pdf with a real file or URL. --><a class="btn btn-secondary" href="resume.pdf">Download Resume</a></div>
+          <div class="hero-actions"><a data-profile-href="email" class="btn btn-primary" href="mailto:hello@example.com">Email <!--profile:firstName-->Alex<!--/profile:firstName--></a><!-- Replace resume.pdf with a real file or URL. --><a data-profile-href="resumeUrl" class="btn btn-secondary" href="resume.pdf">Download Resume</a></div>
         </div>
         <div class="contact-actions">
-          <a class="contact-link" href="mailto:hello@example.com"><strong>hello@example.com</strong><span>Email</span></a>
-          <a class="contact-link" href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer"><strong>github.com/yourusername</strong><span>GitHub ↗</span></a>
-          <a class="contact-link" href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer"><strong>linkedin.com/in/yourusername</strong><span>LinkedIn ↗</span></a>
+          <a data-profile-href="email" class="contact-link" href="mailto:hello@example.com"><strong><!--profile:email-->hello@example.com<!--/profile:email--></strong><span>Email</span></a>
+          <a data-profile-href="githubUrl" class="contact-link" href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer"><strong><!--profile:githubLabel-->github.com/yourusername<!--/profile:githubLabel--></strong><span>GitHub ↗</span></a>
+          <a data-profile-href="linkedinUrl" class="contact-link" href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer"><strong><!--profile:linkedinLabel-->linkedin.com/in/yourusername<!--/profile:linkedinLabel--></strong><span>LinkedIn ↗</span></a>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container footer-row"><span>© <span id="year"></span> Alex Morgan. Demo portfolio template.</span><div class="footer-links"><a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="#home" class="back-top" aria-label="Back to top">↑</a></div></div>
+    <div class="container footer-row"><span>© <span id="year"></span> <!--profile:name-->Alex Morgan<!--/profile:name-->. Demo portfolio template.</span><div class="footer-links"><a data-profile-href="githubUrl" href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GitHub</a><a data-profile-href="linkedinUrl" href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="#home" class="back-top" aria-label="Back to top">↑</a></div></div>
   </footer>
 
   <script>
+    const portfolioProfile = /*profile:data*/{"name": "Alex Morgan", "email": "hello@example.com", "githubUrl": "https://github.com/yourusername", "linkedinUrl": "https://linkedin.com/in/yourusername", "resumeUrl": "resume.pdf"}/*/profile:data*/;
+
+    // A missing observer must not disable local controls or content.
+    const VisibilityObserver = window.IntersectionObserver || class {
+      constructor(callback) { this.callback = callback; }
+      observe(target) { this.callback([{ target, isIntersecting: true }]); }
+      unobserve() {}
+    };
+
     (() => {
       const menuBtn = document.getElementById('menuBtn');
       const navLinks = document.getElementById('navLinks');
@@ -496,22 +517,22 @@
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
 
-      const observer = new IntersectionObserver(entries => {
+      const observer = new VisibilityObserver(entries => {
         entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
       }, { threshold: 0.14 });
       document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
       const counters = document.querySelectorAll('[data-count]');
-      const counterObserver = new IntersectionObserver(entries => {
+      const counterObserver = new VisibilityObserver(entries => {
         entries.forEach(entry => {
           if (!entry.isIntersecting) return;
           const el = entry.target;
           const target = Number(el.dataset.count);
           const suffix = el.dataset.suffix || '';
           const start = performance.now();
-          const duration = 900;
+          const duration = matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 900;
           const tick = now => {
-            const p = Math.min(1, (now - start) / duration);
+            const p = duration === 0 ? 1 : Math.min(1, (now - start) / duration);
             const eased = 1 - Math.pow(1 - p, 3);
             el.textContent = `${Math.round(target * eased)}${suffix}`;
             if (p < 1) requestAnimationFrame(tick);
@@ -535,13 +556,13 @@
       const terminalInput = document.getElementById('terminalInput');
       const responses = {
         help: 'Available commands: about, skills, projects, contact, clear',
-        about: 'Alex Morgan — sample Software Engineer profile focused on reliable product and platform engineering.',
+        about: portfolioProfile.name + ' — sample Software Engineer profile focused on reliable product and platform engineering.',
         skills: 'JavaScript · TypeScript · Python · React · Node.js · PostgreSQL · Docker · AWS',
         projects: 'DevFlow · QueryForge · TaskOrbit · PulseCheck — scroll to Projects for full sample descriptions.',
-        contact: 'Replace hello@example.com, GitHub, LinkedIn, and resume.pdf with your real contact details.'
+        contact: portfolioProfile.email + ' · ' + portfolioProfile.githubUrl + ' · ' + portfolioProfile.linkedinUrl + ' · Resume: ' + portfolioProfile.resumeUrl
       };
       const runCommand = raw => {
-        const command = raw.trim().toLowerCase();
+        const command = raw.slice(0, 200).trim().toLowerCase();
         if (!command) return;
         const entered = document.createElement('p');
         entered.textContent = `$ ${command}`;
@@ -551,16 +572,39 @@
           terminalOutput.replaceChildren();
         } else {
           const line = document.createElement('p');
-          line.textContent = responses[command] || `Unknown command: ${command}. Try "help".`;
-          if (!responses[command]) line.className = 'error';
+          line.textContent = (Object.hasOwn(responses, command) ? responses[command] : undefined) || `Unknown command: ${command}. Try "help".`;
+          if (!(Object.hasOwn(responses, command) ? responses[command] : undefined)) line.className = 'error';
           terminalOutput.appendChild(line);
         }
+        while (terminalOutput.childElementCount > 100) terminalOutput.firstElementChild.remove();
         terminalOutput.scrollTop = terminalOutput.scrollHeight;
       };
       terminalForm.addEventListener('submit', event => { event.preventDefault(); runCommand(terminalInput.value); terminalInput.value = ''; });
       document.querySelectorAll('[data-command]').forEach(button => button.addEventListener('click', () => runCommand(button.dataset.command)));
 
       document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+
+    (() => {
+      const button = document.querySelector('#menuBtn, #menu');
+      const navigation = document.getElementById('navLinks');
+      const close = (restoreFocus = false) => {
+        const wasOpen = navigation.classList.contains('open');
+        navigation.classList.remove('open');
+        button.setAttribute('aria-expanded', 'false');
+        button.setAttribute('aria-label', 'Open navigation');
+        if (restoreFocus && wasOpen) button.focus();
+      };
+      button.addEventListener('click', () => {
+        button.setAttribute('aria-label', navigation.classList.contains('open') ? 'Close navigation' : 'Open navigation');
+      });
+      navigation.addEventListener('click', event => { if (event.target.closest('a')) close(); });
+      document.addEventListener('keydown', event => { if (event.key === 'Escape') close(true); }, true);
+      document.addEventListener('click', event => {
+        if (!navigation.contains(event.target) && !button.contains(event.target)) close();
+      });
+      matchMedia('(max-width:760px)').addEventListener('change', () => close());
+      document.documentElement.classList.add('navigation-ready');
     })();
   </script>
 </body>
